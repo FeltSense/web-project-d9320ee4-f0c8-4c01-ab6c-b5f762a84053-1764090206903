@@ -34,6 +34,8 @@ export default function Services() {
     }
   ];
 
+  const FirstIcon = features[0].icon;
+
   return (
     <section id="services" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -53,7 +55,7 @@ export default function Services() {
           <div className={`md:col-span-2 rounded-2xl bg-gradient-to-br ${features[0].gradient} p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100`}>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
               <div className="flex-shrink-0 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                <features[0].icon className="w-8 h-8 text-white" strokeWidth={2} />
+                <FirstIcon className="w-8 h-8 text-white" strokeWidth={2} />
               </div>
               <div className="flex-1">
                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">
@@ -73,22 +75,25 @@ export default function Services() {
           </div>
 
           {/* Smaller Feature Cards */}
-          {features.slice(1).map((feature, index) => (
-            <div
-              key={index}
-              className={`rounded-2xl bg-gradient-to-br ${feature.gradient} p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100`}
-            >
-              <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
-                <feature.icon className="w-7 h-7 text-white" strokeWidth={2} />
+          {features.slice(1).map((feature, index) => {
+            const FeatureIcon = feature.icon;
+            return (
+              <div
+                key={index}
+                className={`rounded-2xl bg-gradient-to-br ${feature.gradient} p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100`}
+              >
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
+                  <FeatureIcon className="w-7 h-7 text-white" strokeWidth={2} />
+                </div>
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-white/90 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-white/90 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
