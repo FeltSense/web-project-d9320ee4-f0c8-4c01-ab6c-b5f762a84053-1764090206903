@@ -32,9 +32,11 @@ export default function Testimonials() {
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <section id="testimonials" className="py-24 md:py-32 bg-slate-900">
@@ -112,5 +114,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  </button>);
+  );
 }
